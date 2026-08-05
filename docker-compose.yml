@@ -17,9 +17,9 @@ services:
     container_name: voice-transcription-db
     restart: unless-stopped
     environment:
-      - POSTGRES_USER=${DB_USER:-voice_transcription}
-      - POSTGRES_PASSWORD=${DB_PASSWORD:-changeme}
-      - POSTGRES_DB=${DB_NAME:-voice_transcription}
+      - POSTGRES_USER=oice_transcription
+      - POSTGRES_PASSWORD=\changeme
+      - POSTGRES_DB=oice_transcription
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
