@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER=${DB_USER:-voice_transcription}
-      POSTGRES_P...=${DB_PASSWORD:-changeme}
+      POSTGRES_PASSWORD=${DB_PASSWORD:-changeme}
       POSTGRES_DB=${DB_NAME:-voice_transcription}
     volumes:
       - pg_data:/var/lib/postgresql/data
