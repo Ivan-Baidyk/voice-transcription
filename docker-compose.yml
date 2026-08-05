@@ -1,0 +1,33 @@
+name: voice-transcription
+
+services:
+  app:
+    build: .
+    container_name: voice-transcription
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    env_file:
+      - .env
+    networks:
+      - app-network
+
+  db:
+    image: postgres:16-alpine
+    container_name: voice-transcription-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${DB_USER:-voice_transcription}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-changeme}
+      - POSTGRES_DB=${DB_NAME:-voice_transcription}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  pg_data:
+
+networks:
+  app-network:
+    driver: bridge
